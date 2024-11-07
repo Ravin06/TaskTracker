@@ -80,3 +80,38 @@ body {
     outline-offset: 2px;
   }
   
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.task-checkbox {
+    transform: scale(2);
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    color: #888888;
+}
+
+.delete-button {
+    background-color: #272928;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.delete-button:hover {
+    background-color: #161717;
+}
