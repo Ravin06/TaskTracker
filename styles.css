@@ -1,0 +1,82 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 16px;
+    background-color: #121212;
+    color: #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Header */
+  h1 {
+    color: #BB86FC;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    color: #B0B0B0;
+    line-height: 1.6;
+  }
+  
+  /* Input styling */
+  input[type="text"] {
+    padding: 12px;
+    width: calc(100% - 90px);
+    font-size: 1rem;
+    margin-right: 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2C2C2C;
+    color: #E0E0E0;
+    outline: none;
+  }
+  
+  input[type="text"]::placeholder {
+    color: #888888;
+  }
+  
+  /* Button styling */
+  button {
+    padding: 12px 18px;
+    font-size: 1rem;
+    background-color: #BB86FC;
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #9A63E5;
+  }
+  
+  button:active {
+    background-color: #7A47C4;
+  }
+
+  ol {
+    margin-top: 24px;
+    padding-left: 20px;
+    color: #E0E0E0;
+  }
+  
+  li {
+    margin-bottom: 8px;
+  }
+  
+  #emptyMessage {
+    color: #757575;
+    font-style: italic;
+  }
+  
+  input[type="text"]:focus, button:focus {
+    outline: 2px solid #BB86FC;
+    outline-offset: 2px;
+  }
+  
