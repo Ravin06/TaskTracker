@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const savedTasks = getCookie("tasks");
         if (savedTasks) {
             const tasks = JSON.parse(savedTasks);
-            tasks.forEach(task => addTaskToList(task));
+            tasks.forEach(task => addTaskToList(task.text, task.completed));
         }
     }
 
@@ -44,22 +44,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addTask() {
-        const task = inputField.value.trim();
-        if (task === "") return;
-        addTaskToList(task);
+        const taskText = inputField.value.trim();
+        if (taskText === "") return;
+        addTaskToList(taskText, false);
         saveTasksToCookie();
         inputField.value = "";
         updateEmptyMessage();
     }
 
-    function addTaskToList(task) {
+    function addTaskToList(taskText, completed) {
         const listItem = document.createElement("li");
-        listItem.textContent = task;
+        listItem.classList.add("task-item");
+        // Checkbox for marking completion
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = completed;
+        checkbox.classList.add("task-checkbox");
+        checkbox.addEventListener("change", saveTasksToCookie);
+        // Task text
+        const taskContent = document.createElement("span");
+        taskContent.textContent = taskText;
+        taskContent.classList.add("task-text");
+        if (completed) {
+            taskContent.classList.add("completed");
+        }
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "➖";
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", function () {
+            listItem.remove();
+            saveTasksToCookie();
+            updateEmptyMessage();
+
+        });
+
+        listItem.appendChild(checkbox);
+        listItem.appendChild(taskContent);
+        listItem.appendChild(deleteButton);
         list.appendChild(listItem);
     }
 
     function saveTasksToCookie() {
-        const tasks = Array.from(list.children).map(item => item.textContent);
+        const tasks = Array.from(list.children).map(item => ({
+            text: item.querySelector(".task-text").textContent,
+            completed: item.querySelector(".task-checkbox").checked
+        }));
         setCookie("tasks", JSON.stringify(tasks), 7); // Save for 7 days
     }
 
